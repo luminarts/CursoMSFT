@@ -1,7 +1,5 @@
 
 
-Jewel.run()
-JewelCollector.run()
-Map.run()
-Obstacle.run()
-Robot.run()
+Mp.Map.run();
+// Jc.JewelCollector.Main();
+
