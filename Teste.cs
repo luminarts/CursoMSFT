@@ -1,7 +1,10 @@
-namespace Jewels
-{
-    public static Red() 
-    {
-        
-    }
-}
+// namespace Jewels
+// {
+//     public static Red() 
+//     {
+//         public void Value()
+//         {
+
+//         }
+//     }
+// }
