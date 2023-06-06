@@ -1,5 +1,5 @@
 
 
-Mp.Map.run();
-// Jc.JewelCollector.Main();
+// Mp.Map.run();
+Jc.JewelCollector.Main();
 
