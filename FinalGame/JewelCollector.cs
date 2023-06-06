@@ -6,19 +6,18 @@ using Rbt;
 
 namespace Jc
 {
-public class JewelCollector {
-
-    public static void Main() {
-    
-        bool running = true;
-
-        Mp.Map.MapInfo mapinfo = new Mp.Map.MapInfo();
-        Robot rbt = new Robot();
-
-        string[,] mapa = mapinfo.Cell;
-        void PrintMap()
+    public class JCInfo {
+        public static Map.MapInfo mapinfo = new Map.MapInfo();
+        public string [,] mapa = new string[mapinfo.Cell.GetLength(0),mapinfo.Cell.GetLength(1)];
+        public string[,] MapInitialization()
+        {    
+            Map.run();
+            mapa = mapinfo.Cell;
+            return mapa;
+        }
+        public void PrintMap(string[,] mapa)
         {
-                        // Printagem do mapa
+
             for (int i = 0; i < mapa.GetLength(0); i++)
             {
                 for (int j = 0; j < mapa.GetLength(1); j++)
@@ -27,47 +26,52 @@ public class JewelCollector {
                 }
                 Console.WriteLine();
             }
-        }    
-
-        do {
-            PrintMap();
-            Console.WriteLine("Enter the command: ");
-
-            string? command = Console.ReadLine();
-
-            if (command.Equals("quit")) {
-                running = false;
-                
-            } else if (command.Equals("w")) {
-                
-                rbt.Up();
-                
-            } else if (command.Equals("a")) {
-
-                rbt.Left();
-                
-            } else if (command.Equals("s")) {
-
-                rbt.Down();
-
-            
-                
-            } else if (command.Equals("d")) {
-                
-                rbt.Right();
-
-            
-            } else if (command.Equals("g")) {
-        
-        
-
-            } else {
-
-                Console.WriteLine("Por favor, digite algum comando válido");
-            
-            }
-        } while (running);
+        }            
     }
-    }
-}    
-    
+    public class JewelCollector
+    {
+        public static void Main() {
+            Robot rbt = new Robot();
+            JCInfo jc = new JCInfo();
+            string[,] gamemap = jc.MapInitialization();
+
+
+            bool running = true;
+            do {
+                jc.PrintMap(gamemap);
+                Console.WriteLine("Enter the command: ");
+
+                string? command = Console.ReadLine();
+
+                if (command.Equals("quit")) {
+                    running = false;
+                    
+                } else if (command.Equals("w")) {
+                    rbt.Up();
+
+                } else if (command.Equals("a")) {
+                    rbt.Left();
+
+                } else if (command.Equals("s")) {
+                    rbt.Down();
+
+                
+                    
+                } else if (command.Equals("d")) {
+                    rbt.Right();
+
+                
+                } else if (command.Equals("g")) {
+            
+            
+
+                } else {
+
+                    Console.WriteLine("Por favor, digite algum comando válido");
+                
+                }
+            } while (running);        
+            
+        }
+    }    
+}
