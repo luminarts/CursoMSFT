@@ -142,7 +142,7 @@ namespace Mp
             {
                 Robot rbt = new Robot();
                 Cell[rbt.position[0], rbt.position[1]] = rbt.name;
-            // }
+            }
             // public void PrintMap()
             // {
             //                 // Printagem do mapa
@@ -159,8 +159,8 @@ namespace Mp
         
             
             
-            }       
+                   
         }
     }
-
+    
 }
