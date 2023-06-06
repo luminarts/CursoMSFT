@@ -13,7 +13,7 @@ namespace Rbt
         public int bag;
         public void Left()
         {
-            if (position[0]-- >= 0)
+            if (position[0] - 1 >= 0)
             {
                 position[0]--;
 
@@ -21,7 +21,7 @@ namespace Rbt
         }
         public void Right()
         {
-            if (position[0]++ < 10)
+            if (position[0] + 1 < 10)
             {
                 position[0]++;
 
@@ -29,7 +29,7 @@ namespace Rbt
         }
         public void Up()
         {
-            if (position[1]-- >= 0)
+            if (position[1] - 1 >= 0)
             {
                 position[1]--;
 
@@ -37,23 +37,28 @@ namespace Rbt
         }
         public void Down()
         {
-            if (position[1]++ < 10)
+            if (position[1] + 1 < 10)
             {
                 position[1]++;
 
             }
         }
-        public void Grab()
-        {
-            Jewel jwl = new Jewel();
-            int[,] redpositions = jwl.Red();
-            int[,] greenpositions = jwl.Green();
-            int[,] bluepositions = jwl.Blue();
-            // foreach (int[] i in redpositions)
-            // {
-
-            // }
-        }
+        // public void Grab()
+        // {
+        //     Jewel jwl = new Jewel();
+        //     JewelCollector jc = new JewelCollector();
+        //     int[,] redpositions = jwl.Red();
+        //     int[,] greenpositions = jwl.Green();
+        //     int[,] bluepositions = jwl.Blue();
+        //     for (int i = 0; i < redpositions.GetLength(0); i++)
+        //     {
+        //         for (int j = 0; j < redpositions.GetLength(0); j++)
+        //         {
+        //             jc.
+        //         }
+        //     }
+             
+        // }
     }
 
 }
