@@ -16,7 +16,6 @@ namespace Rbt
             if (position[0] - 1 >= 0)
             {
                 position[0]--;
-
             }
         }
         public void Right()
@@ -43,22 +42,10 @@ namespace Rbt
 
             }
         }
-        // public void Grab()
-        // {
-        //     Jewel jwl = new Jewel();
-        //     JewelCollector jc = new JewelCollector();
-        //     int[,] redpositions = jwl.Red();
-        //     int[,] greenpositions = jwl.Green();
-        //     int[,] bluepositions = jwl.Blue();
-        //     for (int i = 0; i < redpositions.GetLength(0); i++)
-        //     {
-        //         for (int j = 0; j < redpositions.GetLength(0); j++)
-        //         {
-        //             jc.
-        //         }
-        //     }
-             
-        // }
-    }
+        public void Grab(string[,] mapa)
+        {
+            if (position[0] + 1)
+        }
+    } // criar função de conversão de string para int (joia para pontos) + bag de armazenar pontos
 
 }

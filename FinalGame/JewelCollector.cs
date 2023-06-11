@@ -10,9 +10,9 @@ namespace Jc
         public static Map.MapInfo mapinfo = new Map.MapInfo();
         public string [,] mapa = new string[mapinfo.Cell.GetLength(0),mapinfo.Cell.GetLength(1)];
         public string[,] MapInitialization()
-        {    
-            Map.run();
-            mapa = mapinfo.Cell;
+        {   
+            Map genmap = new Map(); 
+            mapa = genmap.generatemap(); // will keep generating a new random map
             return mapa;
         }
         public void PrintMap(string[,] mapa)
@@ -22,11 +22,15 @@ namespace Jc
             {
                 for (int j = 0; j < mapa.GetLength(1); j++)
                 {
-                    Console.Write(mapa[i, j] + " ");
+                    Console.Write(mapa[j, i] + " ");
                 }
                 Console.WriteLine();
             }
-        }            
+        }
+        public void NewStage() //After all jewels are collected, move to next phase (increase map and items)
+        {
+
+        }
     }
     public class JewelCollector
     {
@@ -34,36 +38,83 @@ namespace Jc
             Robot rbt = new Robot();
             JCInfo jc = new JCInfo();
             string[,] gamemap = jc.MapInitialization();
-
+            List<string> blockades = new List<string> {"##","$$","JB","JR","JG"};
+            List<string> jewels = new List<string> {"JB","JR","JG"};
 
             bool running = true;
             do {
                 jc.PrintMap(gamemap);
                 Console.WriteLine("Enter the command: ");
 
-                string? command = Console.ReadLine();
+                ConsoleKeyInfo command = Console.ReadKey();
 
-                if (command.Equals("quit")) {
+                Console.WriteLine();
+
+                int x = rbt.position[0];
+                int y = rbt.position[1];
+
+                if (command.Key == ConsoleKey.Q) {
                     running = false;
                     
-                } else if (command.Equals("w")) {
-                    rbt.Up();
+                } else if (command.Key == ConsoleKey.W) {
+                    
+                    if (blockades.Contains(gamemap[x,y-1]) == false)
+                    {
+                        gamemap[rbt.position[0],rbt.position[1]] = "--";
+                        rbt.Up();
+                        gamemap[rbt.position[0],rbt.position[1]] = "ME";
+                    }
+                    
+                } else if (command.Key == ConsoleKey.A) {
 
-                } else if (command.Equals("a")) {
-                    rbt.Left();
-
-                } else if (command.Equals("s")) {
-                    rbt.Down();
+                    if (blockades.Contains(gamemap[x-1,y]) == false)
+                    {
+                        gamemap[rbt.position[0],rbt.position[1]] = "--";
+                        rbt.Left();
+                        gamemap[rbt.position[0],rbt.position[1]] = "ME";
+                    }
+                    
+                } else if (command.Key == ConsoleKey.S) {
+                    if (blockades.Contains(gamemap[x,y + 1]) == false)
+                    {
+                        gamemap[rbt.position[0],rbt.position[1]] = "--";
+                        rbt.Down();
+                        gamemap[rbt.position[0],rbt.position[1]] = "ME";
+                    }
 
                 
                     
-                } else if (command.Equals("d")) {
-                    rbt.Right();
+                } else if (command.Key == ConsoleKey.D) {
+                    if (blockades.Contains(gamemap[x + 1,y]) == false)
+                    {
+                        gamemap[rbt.position[0],rbt.position[1]] = "--";
+                        rbt.Right();
+                        gamemap[rbt.position[0],rbt.position[1]] = "ME";
+                    }
 
                 
-                } else if (command.Equals("g")) {
-            
-            
+                } else if (command.Key == ConsoleKey.G) {
+                    List<string> bag = new List<string>();
+                    if(rbt.position[0] > 0 && jewels.Contains(gamemap[rbt.position[0] - 1,rbt.position[1]]))
+                    {
+                        bag.Add(gamemap[rbt.position[0] - 1,rbt.position[1]]);
+                        gamemap[rbt.position[0] - 1,rbt.position[1]] = "--";
+                    }
+                    if(rbt.position[0] < 9 && jewels.Contains(gamemap[rbt.position[0] + 1,rbt.position[1]]))
+                    {
+                        bag.Add(gamemap[rbt.position[0] + 1,rbt.position[1]]);
+                        gamemap[rbt.position[0] + 1,rbt.position[1]] = "--";
+                    }
+                    if (rbt.position[1] > 0 && jewels.Contains(gamemap[rbt.position[0],rbt.position[1] - 1]))
+                    {
+                        bag.Add(gamemap[rbt.position[0],rbt.position[1] - 1]);
+                        gamemap[rbt.position[0],rbt.position[1] - 1] = "--";
+                    }
+                    if (rbt.position[1] < 9 && jewels.Contains(gamemap[rbt.position[0],rbt.position[1] + 1]))
+                    {
+                        bag.Add(gamemap[rbt.position[0],rbt.position[1] + 1]);
+                        gamemap[rbt.position[0],rbt.position[1] + 1] = "--";
+                    }
 
                 } else {
 
