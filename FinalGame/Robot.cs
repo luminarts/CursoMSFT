@@ -5,7 +5,7 @@ using Jwl;
 
 namespace Rbt
 {
-    public class Robot
+    public class Robot 
     {
         public string name = "ME";
         public int[] position = {0,0};
