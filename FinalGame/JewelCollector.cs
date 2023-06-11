@@ -27,7 +27,32 @@ namespace Jc
                 Console.WriteLine();
             }
         }
-        public void NewStage() //After all jewels are collected, move to next phase (increase map and items)
+        public void PrintBag(List<string> b, int v)
+        {
+            int ammount = b.Count;
+            Jewel jwl = new Jewel();
+
+            foreach (string jewel in b)
+            {
+                if (jewel == "JG")
+                {
+                    v += jwl.greenpoints;
+                }
+                else if (jewel == "JB")
+                {
+                    v += jwl.bluepoints;
+                }
+                else if (jewel == "JR")
+                {
+                    v += jwl.redpoints;
+                }
+            }
+            
+            Console.WriteLine($"Bag total items: {ammount} | Bag total value: {v}");
+
+            
+        }
+        public void NewStage() //After all jewels are collected, move to next phase (increase map and items) (maybe put main() inside main, so that it runs in itself?)
         {
 
         }
@@ -40,10 +65,12 @@ namespace Jc
             string[,] gamemap = jc.MapInitialization();
             List<string> blockades = new List<string> {"##","$$","JB","JR","JG"};
             List<string> jewels = new List<string> {"JB","JR","JG"};
+            int value = 0;
 
             bool running = true;
             do {
                 jc.PrintMap(gamemap);
+                jc.PrintBag(rbt.bag, value);
                 Console.WriteLine("Enter the command: ");
 
                 ConsoleKeyInfo command = Console.ReadKey();
@@ -94,27 +121,8 @@ namespace Jc
 
                 
                 } else if (command.Key == ConsoleKey.G) {
-                    List<string> bag = new List<string>();
-                    if(rbt.position[0] > 0 && jewels.Contains(gamemap[rbt.position[0] - 1,rbt.position[1]]))
-                    {
-                        bag.Add(gamemap[rbt.position[0] - 1,rbt.position[1]]);
-                        gamemap[rbt.position[0] - 1,rbt.position[1]] = "--";
-                    }
-                    if(rbt.position[0] < 9 && jewels.Contains(gamemap[rbt.position[0] + 1,rbt.position[1]]))
-                    {
-                        bag.Add(gamemap[rbt.position[0] + 1,rbt.position[1]]);
-                        gamemap[rbt.position[0] + 1,rbt.position[1]] = "--";
-                    }
-                    if (rbt.position[1] > 0 && jewels.Contains(gamemap[rbt.position[0],rbt.position[1] - 1]))
-                    {
-                        bag.Add(gamemap[rbt.position[0],rbt.position[1] - 1]);
-                        gamemap[rbt.position[0],rbt.position[1] - 1] = "--";
-                    }
-                    if (rbt.position[1] < 9 && jewels.Contains(gamemap[rbt.position[0],rbt.position[1] + 1]))
-                    {
-                        bag.Add(gamemap[rbt.position[0],rbt.position[1] + 1]);
-                        gamemap[rbt.position[0],rbt.position[1] + 1] = "--";
-                    }
+                    
+                    rbt.Grab(gamemap);
 
                 } else {
 
