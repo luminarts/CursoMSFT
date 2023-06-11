@@ -9,10 +9,11 @@ namespace Jwl
         public int redpoints = 100;
         public int greenpoints = 50;
         public int bluepoints = 10;
+
         public int[,] Red()
         {
             name = "JR";
-            int reds = rnd.Next(1,4);
+            int reds = 2;
             int[,] redpositions = new int[reds,2];
 
             for (int r = 0; r < reds; r++)
@@ -35,7 +36,7 @@ namespace Jwl
         public int [,] Green()
         {
             name = "JG";
-            int greens = rnd.Next(1,4);
+            int greens = 2;
             int[,] greenpositions = new int[greens,2];
 
             for (int r = 0; r < greens; r++)
@@ -56,7 +57,7 @@ namespace Jwl
         public int[,] Blue()
         {
             name = "JB";
-            int blues = rnd.Next(1,4);
+            int blues = 4;
             int[,] bluepositions = new int[blues,2];
 
             for (int r = 0; r < blues; r++)

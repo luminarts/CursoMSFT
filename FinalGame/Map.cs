@@ -17,11 +17,7 @@ namespace Mp
             x = newMap.Cell;
             return x; 
         }
-        // interface Cell
-        // {
-        //     void CellObstacleGeneration();
-        // }
-
+        
         public class MapInfo
         {
             string[] obstacles = new string[3];
@@ -31,8 +27,9 @@ namespace Mp
             
             public void CellObstacleGeneration()
             {
-                Obstacle ob = new Obstacle();
-                int[,] treepositions = ob.Tree();
+                Obstacle obst = new Obstacle();
+
+                int[,] treepositions = obst.Tree();
 
                 for (int i = 0; i < treepositions.GetLength(0); i++)
                 {
@@ -45,11 +42,12 @@ namespace Mp
                         else
                         {
                             y = treepositions[i,j];
-                            Cell[x,y] = ob.name;
+                            Cell[x,y] = obst.name;
                         }
                     }
                 }
-                int[,] waterpositions = ob.Water();
+
+                int[,] waterpositions = obst.Water();
 
                 for (int i = 0; i < waterpositions.GetLength(0); i++)
                 {
@@ -62,12 +60,30 @@ namespace Mp
                         else
                         {
                             y = waterpositions[i,j];
-                            Cell[x,y] = ob.name;
+                            Cell[x,y] = obst.name;
+                        }
+                    }
+                }
+
+                int[,] radiopositions = obst.RadioactiveElement();
+
+                for (int i = 0; i < radiopositions.GetLength(0); i++)
+                {
+                    for (int j = 0; j < 2; j++)
+                    {
+                        if (j == 0)
+                        {
+                            x = radiopositions[i,j];
+                        }
+                        else
+                        {
+                            y = radiopositions[i,j];
+                            Cell[x,y] = obst.name;
                         }
                     }
                 }
                 
-                ob.Empty();
+                obst.Empty();
 
                 for (int i = 0; i < Cell.GetLength(0); i++)
                 {
@@ -75,7 +91,7 @@ namespace Mp
                     {
                         if (Cell[i,j] == null)
                         {
-                            Cell[i,j] = ob.name;
+                            Cell[i,j] = obst.name;
                             
                         }
 

@@ -42,7 +42,7 @@ namespace Rbt
 
             }
         }
-        public void Grab(string[,] mapa)
+        public int Grab(string[,] mapa, int energy)
         {
             
             List<string> jewels = new List<string> {"JB","JR","JG"};
@@ -50,25 +50,45 @@ namespace Rbt
             if(position[0] > 0 && jewels.Contains(mapa[position[0] - 1,position[1]]))
             {
                 bag.Add(mapa[position[0] - 1,position[1]]);
+                if (mapa[position[0] - 1,position[1]] == "JB")
+                {
+                    energy += 5;
+                    Console.WriteLine("Entrou no Azul");
+                }
                 mapa[position[0] - 1,position[1]] = "--";
             }
             if(position[0] < 9 && jewels.Contains(mapa[position[0] + 1,position[1]]))
             {
                 bag.Add(mapa[position[0] + 1,position[1]]);
+                if (position[0] < 9 && mapa[position[0] + 1,position[1]] == "JB")
+                {
+                    energy += 5;
+                    Console.WriteLine("Entrou no Azul");
+                }
                 mapa[position[0] + 1,position[1]] = "--";
             }
             if (position[1] > 0 && jewels.Contains(mapa[position[0],position[1] - 1]))
             {
                 bag.Add(mapa[position[0],position[1] - 1]);
+                if (position[1] > 0 && mapa[position[0],position[1] - 1] == "JB")
+                {
+                    energy += 5;
+                    Console.WriteLine("Entrou no Azul");
+                }
                 mapa[position[0],position[1] - 1] = "--";
             }
             if (position[1] < 9 && jewels.Contains(mapa[position[0],position[1] + 1]))
             {
                 bag.Add(mapa[position[0],position[1] + 1]);
+                if (position[1] < 9 && mapa[position[0], position[1] + 1] == "JB")
+                {
+                    energy += 5;
+                    Console.WriteLine("Entrou no Azul");
+                }
                 mapa[position[0],position[1] + 1] = "--";
             }
-
+            return energy;
         }
-    } // criar função de conversão de string para int (joia para pontos) + bag de armazenar pontos
+    } 
 
 }

@@ -8,21 +8,21 @@ namespace Jc
 {
     public class JCInfo {
         public static Map.MapInfo mapinfo = new Map.MapInfo();
-        public string [,] mapa = new string[mapinfo.Cell.GetLength(0),mapinfo.Cell.GetLength(1)];
+        public string [,] gamemap = new string[mapinfo.Cell.GetLength(0),mapinfo.Cell.GetLength(1)];
         public string[,] MapInitialization()
         {   
             Map genmap = new Map(); 
-            mapa = genmap.generatemap(); // will keep generating a new random map
-            return mapa;
+            gamemap = genmap.generatemap(); // will keep generating a new random map
+            return gamemap;
         }
-        public void PrintMap(string[,] mapa)
+        public void PrintMap(string[,] gamemap)
         {
 
-            for (int i = 0; i < mapa.GetLength(0); i++)
+            for (int i = 0; i < gamemap.GetLength(0); i++)
             {
-                for (int j = 0; j < mapa.GetLength(1); j++)
+                for (int j = 0; j < gamemap.GetLength(1); j++)
                 {
-                    Console.Write(mapa[j, i] + " ");
+                    Console.Write(gamemap[j, i] + " ");
                 }
                 Console.WriteLine();
             }
@@ -52,9 +52,11 @@ namespace Jc
 
             
         }
-        public void NewStage() //After all jewels are collected, move to next phase (increase map and items) (maybe put main() inside main, so that it runs in itself?)
+        public void NewStage() //After all jewels are collected, move to nerbt.position[0]t phase (increase map and items) (maybe put main() inside main, so that it runs in itself?)
         {
-
+            // aumento do gamemap
+            // aumento de itens
+            //
         }
     }
     public class JewelCollector
@@ -62,68 +64,91 @@ namespace Jc
         public static void Main() {
             Robot rbt = new Robot();
             JCInfo jc = new JCInfo();
+            Obstacle obst = new Obstacle();
+            Jewel jwl = new Jewel();
+
             string[,] gamemap = jc.MapInitialization();
             List<string> blockades = new List<string> {"##","$$","JB","JR","JG"};
             List<string> jewels = new List<string> {"JB","JR","JG"};
+            List<string> obstacles = new List<string> {"##", "$$"};
             int value = 0;
+            int energy = 100;
 
             bool running = true;
             do {
                 jc.PrintMap(gamemap);
                 jc.PrintBag(rbt.bag, value);
+                energy = obst.ObstacleEnergy(gamemap,energy,rbt.position[0],rbt.position[1]);
+               
+                Console.WriteLine($"Energia Restante: {energy}");
+
                 Console.WriteLine("Enter the command: ");
 
                 ConsoleKeyInfo command = Console.ReadKey();
 
                 Console.WriteLine();
 
-                int x = rbt.position[0];
-                int y = rbt.position[1];
+
+                if (energy <= 0)
+                {
+                    Console.WriteLine("Você ficou sem energia! Tente de novo.");
+                    running = false;
+                }
 
                 if (command.Key == ConsoleKey.Q) {
                     running = false;
                     
                 } else if (command.Key == ConsoleKey.W) {
                     
-                    if (blockades.Contains(gamemap[x,y-1]) == false)
+                    //antes dele se mexer, identificar presença de elemento radioativo e realizar a condição de transpassagem
+                    if (blockades.Contains(gamemap[rbt.position[0],rbt.position[1]-1]) == false)
                     {
                         gamemap[rbt.position[0],rbt.position[1]] = "--";
                         rbt.Up();
+                        energy--;
                         gamemap[rbt.position[0],rbt.position[1]] = "ME";
                     }
                     
                 } else if (command.Key == ConsoleKey.A) {
-
-                    if (blockades.Contains(gamemap[x-1,y]) == false)
+                    //antes dele se mexer, identificar presença de elemento radioativo e realizar a condição de transpassagem
+                    if (blockades.Contains(gamemap[rbt.position[0]-1,rbt.position[1]]) == false)
                     {
                         gamemap[rbt.position[0],rbt.position[1]] = "--";
                         rbt.Left();
+                        energy--;
                         gamemap[rbt.position[0],rbt.position[1]] = "ME";
                     }
                     
                 } else if (command.Key == ConsoleKey.S) {
-                    if (blockades.Contains(gamemap[x,y + 1]) == false)
+
+
+                    //antes dele se mexer, identificar presença de elemento radioativo e realizar a condição de transpassagem
+                    if (blockades.Contains(gamemap[rbt.position[0],rbt.position[1] + 1]) == false)
                     {
                         gamemap[rbt.position[0],rbt.position[1]] = "--";
                         rbt.Down();
+                        energy--;
                         gamemap[rbt.position[0],rbt.position[1]] = "ME";
                     }
 
                 
                     
                 } else if (command.Key == ConsoleKey.D) {
-                    if (blockades.Contains(gamemap[x + 1,y]) == false)
+
+                    //antes dele se mexer, identificar presença de elemento radioativo e realizar a condição de transpassagem
+                    if (blockades.Contains(gamemap[rbt.position[0] + 1,rbt.position[1]]) == false)
                     {
                         gamemap[rbt.position[0],rbt.position[1]] = "--";
                         rbt.Right();
+                        energy--;
                         gamemap[rbt.position[0],rbt.position[1]] = "ME";
                     }
 
                 
                 } else if (command.Key == ConsoleKey.G) {
                     
-                    rbt.Grab(gamemap);
-
+                    energy = rbt.Grab(gamemap, energy);
+                    
                 } else {
 
                     Console.WriteLine("Por favor, digite algum comando válido");
