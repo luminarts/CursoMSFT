@@ -1,0 +1,15 @@
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.csproj.AssemblyReference.cache
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.AssemblyInfoInputs.cache
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.AssemblyInfo.cs
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.csproj.CoreCompileInputs.cache
+C:\Users\gusta\Curso-MSFT\bin\Debug\net6.0\Class1.exe
+C:\Users\gusta\Curso-MSFT\bin\Debug\net6.0\Class1.deps.json
+C:\Users\gusta\Curso-MSFT\bin\Debug\net6.0\Class1.runtimeconfig.json
+C:\Users\gusta\Curso-MSFT\bin\Debug\net6.0\Class1.dll
+C:\Users\gusta\Curso-MSFT\bin\Debug\net6.0\Class1.pdb
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.dll
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\refint\Class1.dll
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.pdb
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\Class1.genruntimeconfig.cache
+C:\Users\gusta\Curso-MSFT\obj\Debug\net6.0\ref\Class1.dll
