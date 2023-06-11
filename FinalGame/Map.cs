@@ -7,20 +7,22 @@ namespace Mp
 {
     public class Map
     {
-        public static void run()
+        public string[,] generatemap()
         {
             MapInfo newMap = new MapInfo();
             newMap.CellObstacleGeneration();
             newMap.CellJewelGeneration();
             newMap.CellRobotGeneration();
-            // newMap.PrintMap();
+            string[,] x;
+            x = newMap.Cell;
+            return x; 
         }
-        interface Cell
-        {
-            void CellObstacleGeneration();
-        }
+        // interface Cell
+        // {
+        //     void CellObstacleGeneration();
+        // }
 
-        public class MapInfo : Cell
+        public class MapInfo
         {
             string[] obstacles = new string[3];
             public string[,] Cell = new string[10,10];
