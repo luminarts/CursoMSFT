@@ -6,6 +6,14 @@ using Rbt;
 
 namespace Jc
 {
+    public static class Run
+    {
+        public static void run()
+        {
+           JewelCollector.Main(); 
+        }
+        
+    }
     public class JewelCollector
     {
         /// <summary>
