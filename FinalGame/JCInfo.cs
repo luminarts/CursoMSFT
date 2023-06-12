@@ -2,7 +2,7 @@ using Mp;
 using Jwl;
 
 public class JCInfo {
-        public static Map.MapInfo mapinfo = new Map.MapInfo();
+        public static Mp.Map.MapInfo mapinfo = new Mp.Map.MapInfo();
         public string [,] gamemap = new string[mapinfo.Cell.GetLength(0),mapinfo.Cell.GetLength(1)];
         List<string> jewels = new List<string> {"JB","JR","JG"};
         /// <summary>
@@ -71,7 +71,7 @@ public class JCInfo {
         {   
         if (mapa.GetLength(0) < 31)
         {
-            Map mp = new Map();
+            Mp.Map mp = new Mp.Map();
             Console.WriteLine(mapa.GetLength(0));
             mp.GenerateMap();
             string[,] x = mapinfo.Cell;
