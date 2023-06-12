@@ -7,6 +7,10 @@ namespace Mp
 {
     public class Map
     {
+        /// <summary>
+        /// Esse método serve para gerar o mapa a partir de outros métodos combinados.
+        /// </summary>
+        /// <returns>Retorna uma matrix x, que representa o mapa gerado.</returns>
         public string[,] GenerateMap()
         {
             MapInfo newMap = new MapInfo();
@@ -26,7 +30,9 @@ namespace Mp
             public string[,] Cell = new string[10,10];
             public int x;
             public int y;
-            
+            /// <summary>
+            /// Esse método serve para colocar os obstáculos nos lugares definidos por suas posições, que por sua vez, foram definidas na classe Obstacle
+            /// </summary>
             public void CellObstacleGeneration()
             {
                 Obstacle obst = new Obstacle();
@@ -100,6 +106,9 @@ namespace Mp
                     }
                 }
             }
+            /// <summary>
+            /// Esse método serve para colocar as jóias nos lugares definidos por suas posições, que por sua vez, foram definidas na classe Jewel
+            /// </summary>
             public void CellJewelGeneration()
             {
                 Jewel jwl = new Jewel();
@@ -157,6 +166,9 @@ namespace Mp
                     }
                 }
             }
+            /// <summary>
+            /// Esse método serve para colocar o robô no seu lugar definido por sua posição, que por sua vez, foram definidas na classe Robot.
+            /// </summary>
             public void CellRobotGeneration()
             {
                 Robot rbt = new Robot();
@@ -164,5 +176,4 @@ namespace Mp
             }      
         }
     }
-    
 }

@@ -9,7 +9,10 @@ namespace Jwl
         public int redpoints = 100;
         public int greenpoints = 50;
         public int bluepoints = 10;
-
+        /// <summary>
+        /// Esse método serve para gerar valores aleatórios para as posições das jewels vermelhas.
+        /// </summary>
+        /// <returns>Retorna uma matriz reds x 2, onde reds é o número de jewels vermelhas.</returns>
         public int[,] Red()
         {
             name = "JR";
@@ -33,6 +36,10 @@ namespace Jwl
             return redpositions;
 
         }
+        /// <summary>
+        /// Esse método serve para gerar valores aleatórios para as posições das jewels verdes.
+        /// </summary>
+        /// <returns>Retorna uma matriz greens x 2, onde greens é o número de jewels verdes.</returns>
         public int [,] Green()
         {
             name = "JG";
@@ -54,6 +61,10 @@ namespace Jwl
             }
             return greenpositions;
         }
+        /// <summary>
+        /// Esse método serve para gerar valores aleatórios para as posições das jewels azuis.
+        /// </summary>
+        /// <returns>Retorna uma matriz blues x 2, onde blues é o número de jewels azuis.</returns>
         public int[,] Blue()
         {
             name = "JB";

@@ -8,7 +8,9 @@ namespace Jc
 {
     public class JewelCollector
     {
-        
+        /// <summary>
+        /// É a classe principal em que são compilados as definições e métodos de outras classes.
+        /// </summary>
         public static void Main() {
             Robot rbt = new Robot();
             JCInfo jc = new JCInfo();
