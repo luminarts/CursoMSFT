@@ -30,7 +30,7 @@ namespace Jc
             List<string> jewels = new List<string> {"JB","JR","JG"};
             List<string> obstacles = new List<string> {"##", "$$"};
             int value = 0;
-            int energy = 100;
+            int energy = 5;
             bool running = true;
             int level = 0;
             do {
