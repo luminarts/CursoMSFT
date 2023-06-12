@@ -7,6 +7,9 @@ using Mp;
 
 namespace Obst
 {
+    /// <summary>
+    /// Essa classe é responsável por todas os obstáculos a serem gerados e suas coordenadas 
+    /// </summary>
     public class Obstacle
     {
         Random rnd = new Random();

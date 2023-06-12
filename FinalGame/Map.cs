@@ -5,6 +5,9 @@ using System.Collections.Generic;
 
 namespace Mp
 {
+    /// <summary>
+    /// Essa classe é responsável por armazenar todos os dados a respeito da geração do mapa do jogo
+    /// </summary>
     public class Map
     {
         /// <summary>
@@ -22,7 +25,9 @@ namespace Mp
             x = newMap.Cell;
             return x; 
         }
-
+        /// <summary>
+        /// Essa classe possui todos os métodos de atribuição de coordenadas do mapa aos objetoss
+        /// </summary>
         public class MapInfo
         {
             

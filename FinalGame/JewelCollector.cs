@@ -5,19 +5,14 @@ using Obst;
 using Rbt;
 
 namespace Jc
-{
-    public static class Run
-    {
-        public static void run()
-        {
-           JewelCollector.Main(); 
-        }
-        
-    }
+{       
+    /// <summary>
+    /// Essa é a classe principal onde todas as definições e métodos a partir de seu único método Main
+    /// </summary>
     public class JewelCollector
     {
         /// <summary>
-        /// É a classe principal em que são compilados as definições e métodos de outras classes.
+        /// É o método principal em que são compilados as definições e métodos de outras classes.
         /// </summary>
         public static void Main() {
             Robot rbt = new Robot();

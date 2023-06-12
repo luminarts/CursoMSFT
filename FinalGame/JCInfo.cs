@@ -1,6 +1,8 @@
 using Mp;
 using Jwl;
-
+/// <summary>
+/// Essa classe serve para organizar e armazenar as informações das classes secundárias e enfim utilizá-las na classe principal JewelCollector
+/// </summary>
 public class JCInfo {
         public static Mp.Map.MapInfo mapinfo = new Mp.Map.MapInfo();
         public string [,] gamemap = new string[mapinfo.Cell.GetLength(0),mapinfo.Cell.GetLength(1)];

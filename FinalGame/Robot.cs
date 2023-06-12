@@ -5,6 +5,9 @@ using Jwl;
 
 namespace Rbt
 {
+    /// <summary>
+    /// Essa classe armazena as informações de movimentação e ações do robô, além de sua relação energética com a joia azul
+    /// </summary>
     public class Robot 
     {
         Map.MapInfo newMap = new Map.MapInfo();

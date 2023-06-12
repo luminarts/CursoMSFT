@@ -1,5 +1,8 @@
 namespace Jwl
 {
+    /// <summary>
+    /// Essa classe serve oara armazenar as informações de posição, valor e relação de energia de cada jewel
+    /// </summary>
     public class Jewel
     {
     
