@@ -1,13 +1,17 @@
 using Rbt;
 using Jc;
 using System.Collections.Generic;
+using Mp;
+
 
 namespace Obst
 {
     public class Obstacle
     {
         Random rnd = new Random();
-        
+        JewelCollector jc = new JewelCollector();
+        Map.MapInfo Map = new Map.MapInfo();
+
         public string name = "";
         List<(int, int)> unique = new List<(int, int)>();
         int numoftrees = 5;
@@ -22,8 +26,8 @@ namespace Obst
             {
                 while (unique.Count < numoftrees)
                 {
-                    int x = rnd.Next(10);
-                    int y = rnd.Next(10);
+                    int x = rnd.Next(Map.Cell.GetLength(0));
+                    int y = rnd.Next(Map.Cell.GetLength(0));
                     var pair = (x, y);
                     if (unique.Contains(pair) == false && pair != (0,0))
                     {
@@ -55,8 +59,8 @@ namespace Obst
             {
                 while (unique.Count < numofwater + numoftrees)
                 {
-                    int x = rnd.Next(10);
-                    int y = rnd.Next(10);
+                    int x = rnd.Next(Map.Cell.GetLength(0));
+                    int y = rnd.Next(Map.Cell.GetLength(0));
                     var pair = (x, y);
                     if (unique.Contains(pair) == false && pair != (0,0))
                     {
@@ -91,8 +95,8 @@ namespace Obst
             {
                 while (unique.Count < numofradio + numoftrees + numofwater)
                 {
-                    int x = rnd.Next(10);
-                    int y = rnd.Next(10);
+                    int x = rnd.Next(Map.Cell.GetLength(0));
+                    int y = rnd.Next(Map.Cell.GetLength(0));
                     var pair = (x, y);
                     if (unique.Contains(pair) == false && pair != (0,0))
                     {
@@ -159,7 +163,7 @@ namespace Obst
                     Console.WriteLine($"Você sente sua vida sendo sugada por dentro! Energia: {energy}");
                 }
             else{
-                Console.WriteLine($"Não tem nenhum item de recuperação de energia perto. Posição: {rbt.position[0]},{y} | Energia: {energy}");
+                Console.WriteLine($"Não tem nenhum item de recuperação de energia perto. Posição: {x},{y} | Energia: {energy}");
             }
             return energy;
         }

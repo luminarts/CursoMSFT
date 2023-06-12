@@ -7,9 +7,10 @@ namespace Mp
 {
     public class Map
     {
-        public string[,] generatemap()
+        public string[,] GenerateMap()
         {
             MapInfo newMap = new MapInfo();
+
             newMap.CellObstacleGeneration();
             newMap.CellJewelGeneration();
             newMap.CellRobotGeneration();
@@ -17,9 +18,10 @@ namespace Mp
             x = newMap.Cell;
             return x; 
         }
-        
+
         public class MapInfo
         {
+            
             string[] obstacles = new string[3];
             public string[,] Cell = new string[10,10];
             public int x;
@@ -154,30 +156,12 @@ namespace Mp
                         }
                     }
                 }
-
             }
             public void CellRobotGeneration()
             {
                 Robot rbt = new Robot();
                 Cell[rbt.position[0], rbt.position[1]] = rbt.name;
-            }
-            // public void PrintMap()
-            // {
-            //                 // Printagem do mapa
-            //     for (int i = 0; i < Cell.GetLength(0); i++)
-            //     {
-            //         for (int j = 0; j < Cell.GetLength(1); j++)
-            //         {
-            //             Console.Write(Cell[i, j] + " ");
-            //         }
-            //         Console.WriteLine();
-            //     }
-            // }    
-            
-        
-            
-            
-                   
+            }      
         }
     }
     

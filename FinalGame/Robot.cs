@@ -7,6 +7,8 @@ namespace Rbt
 {
     public class Robot 
     {
+        Map.MapInfo newMap = new Map.MapInfo();
+
         public string name = "ME";
         public int[] position = {0,0};
         public int points;
@@ -20,7 +22,7 @@ namespace Rbt
         }
         public void Right()
         {
-            if (position[0] + 1 < 10)
+            if (position[0] + 1 < newMap.Cell.GetLength(0))
             {
                 position[0]++;
 
@@ -36,7 +38,7 @@ namespace Rbt
         }
         public void Down()
         {
-            if (position[1] + 1 < 10)
+            if (position[1] + 1 < newMap.Cell.GetLength(0))
             {
                 position[1]++;
 
@@ -53,17 +55,15 @@ namespace Rbt
                 if (mapa[position[0] - 1,position[1]] == "JB")
                 {
                     energy += 5;
-                    Console.WriteLine("Entrou no Azul");
                 }
                 mapa[position[0] - 1,position[1]] = "--";
             }
-            if(position[0] < 9 && jewels.Contains(mapa[position[0] + 1,position[1]]))
+            if(position[0] < newMap.Cell.GetLength(0) - 1 && jewels.Contains(mapa[position[0] + 1,position[1]]))
             {
                 bag.Add(mapa[position[0] + 1,position[1]]);
-                if (position[0] < 9 && mapa[position[0] + 1,position[1]] == "JB")
+                if (position[0] < newMap.Cell.GetLength(0) - 1 && mapa[position[0] + 1,position[1]] == "JB")
                 {
                     energy += 5;
-                    Console.WriteLine("Entrou no Azul");
                 }
                 mapa[position[0] + 1,position[1]] = "--";
             }
@@ -73,17 +73,15 @@ namespace Rbt
                 if (position[1] > 0 && mapa[position[0],position[1] - 1] == "JB")
                 {
                     energy += 5;
-                    Console.WriteLine("Entrou no Azul");
                 }
                 mapa[position[0],position[1] - 1] = "--";
             }
-            if (position[1] < 9 && jewels.Contains(mapa[position[0],position[1] + 1]))
+            if (position[1] < newMap.Cell.GetLength(0) - 1 && jewels.Contains(mapa[position[0],position[1] + 1]))
             {
                 bag.Add(mapa[position[0],position[1] + 1]);
-                if (position[1] < 9 && mapa[position[0], position[1] + 1] == "JB")
+                if (position[1] < newMap.Cell.GetLength(0) - 1 && mapa[position[0], position[1] + 1] == "JB")
                 {
                     energy += 5;
-                    Console.WriteLine("Entrou no Azul");
                 }
                 mapa[position[0],position[1] + 1] = "--";
             }
